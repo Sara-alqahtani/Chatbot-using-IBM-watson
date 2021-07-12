@@ -1,0 +1,330 @@
+{
+  "intents": [
+    {
+      "intent": "Food",
+      "examples": [
+        {
+          "text": "Breackfast"
+        },
+        {
+          "text": "Breakfast"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food2",
+      "examples": [
+        {
+          "text": "Lunch"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food3",
+      "examples": [
+        {
+          "text": "Dinner"
+        },
+        {
+          "text": "Snack"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food4",
+      "examples": [
+        {
+          "text": "Dinner"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "new",
+      "examples": [
+        {
+          "text": "thanks"
+        },
+        {
+          "text": "thank u"
+        },
+        {
+          "text": "thank you"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "welcome",
+      "examples": [
+        {
+          "text": "hei"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "think"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Foodtype",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Breakfast",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Dinner",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Lunch",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Snack",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1626074401214",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Food",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190322-ham-sandwich-horizontal-1553721016.png?crop=0.668xw:1.00xh;0.168xw,0&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a26966279/ham-sandwich-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-20210423-whipped-ricotta-toast-006-ab-1619697048.jpg?crop=1xw:0.9160251924422673xh;center,top&resize=980:*",
+            "description": "https://www.delish.com/cooking/a36276712/whipped-ricotta-toast-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food",
+      "dialog_node": "node_1_1626074165543",
+      "previous_sibling": "node_3_1626059239625"
+    },
+    {
+      "type": "standard",
+      "title": "new",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "What meal recipe do you want? Ex:breakfast,Dinner..etc"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#new",
+      "dialog_node": "node_3_1626059239625",
+      "previous_sibling": "node_8_1626059094319"
+    },
+    {
+      "type": "standard",
+      "title": "Food3 ",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe details):",
+            "source": "",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-cantaloupe-breakfast-bowls-pin-1557182240.jpg?crop=1xw:1xh;center,top&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a27257584/cantaloupe-breakfast-bowls-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food3",
+      "dialog_node": "node_5_1626074398061",
+      "previous_sibling": "node_6_1626074394329"
+    },
+    {
+      "type": "standard",
+      "title": "Food2",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/del.h-cdn.co/assets/17/31/2048x1365/gallery-1501791773-delish-crock-pot-pork-chops-horizontal.jpg?resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/recipes/a54689/easy-crock-pot-pork-chops-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-slow-cooker-pulled-pork-horizontal-2-1539619173.png?crop=1xw:1xh;center,top&resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/recipes/a51267/slow-cooker-pulled-pork-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Third Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190322-carrot-salad-vertical-1553721842.png?crop=0.974xw:0.651xh;0.0136xw,0.168xh&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a26966588/carrot-salad-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food2",
+      "dialog_node": "node_6_1626074394329",
+      "previous_sibling": "node_1_1626074165543"
+    },
+    {
+      "type": "standard",
+      "title": "Food4",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/strawberry-smoothie-bowls-wd-0220-1579641095.jpg?crop=0.898xw:0.600xh;0.0604xw,0.189xh&resize=980:*",
+            "description": "https://www.womansday.com/food-recipes/a30614521/strawberry-smoothie-bowls-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe details):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-210519-farrosalad-06-landscape-jg-1622850730.jpg?crop=0.929xw:0.862xh;0.0289xw,0.0663xh&resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a36364378/grain-salad-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food4",
+      "dialog_node": "node_6_1626074401214",
+      "previous_sibling": "node_5_1626074398061"
+    },
+    {
+      "type": "standard",
+      "title": "Welcoming",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nice to see you again!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#welcome",
+      "dialog_node": "node_8_1626059094319",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Will hello there! I'm \"Foodi\", and i'm gona give you some recipes ideas!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "talk",
+  "language": "en",
+  "description": ""
+}
