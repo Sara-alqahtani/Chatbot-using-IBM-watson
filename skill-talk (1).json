@@ -1,0 +1,372 @@
+{
+  "intents": [
+    {
+      "intent": "Food",
+      "examples": [
+        {
+          "text": "Breackfast"
+        },
+        {
+          "text": "Breakfast"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food2",
+      "examples": [
+        {
+          "text": "Lunch"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food3",
+      "examples": [
+        {
+          "text": "Dinner"
+        },
+        {
+          "text": "Snack"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food4",
+      "examples": [
+        {
+          "text": "Dinner"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "new",
+      "examples": [
+        {
+          "text": "thanks"
+        },
+        {
+          "text": "thank u"
+        },
+        {
+          "text": "thank you"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "welcome",
+      "examples": [
+        {
+          "text": "hei"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "think"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Foodtype",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Breakfast",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Dinner",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Lunch",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Snack",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1626070533042",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "new",
+      "output": {
+        "generic": [
+          {
+            "title": "Choose a meal from the list:",
+            "options": [
+              {
+                "label": "Breakfast",
+                "value": {
+                  "input": {
+                    "text": ""
+                  }
+                }
+              },
+              {
+                "label": "Lunch",
+                "value": {
+                  "input": {
+                    "text": ""
+                  }
+                }
+              },
+              {
+                "label": "Dinner",
+                "value": {
+                  "input": {
+                    "text": ""
+                  }
+                }
+              },
+              {
+                "label": "Snack",
+                "value": {
+                  "input": {
+                    "text": ""
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#new",
+      "dialog_node": "node_3_1626059239625",
+      "previous_sibling": "node_8_1626059094319"
+    },
+    {
+      "type": "standard",
+      "title": "Food3",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-210519-airfryerzucchini-10-landscape-jg-1621892944.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a36523305/air-fryer-zucchini-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191907-bang-bang-cauliflower-0289-landscape-pf-1564579186.jpg?resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/recipes/a57497/bang-bang-cauliflower-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Third Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-202012-airfryerbrusselssprouts-038-ls-1608673153.jpg?crop=1.00xw:0.801xh;0,0.0966xh&resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a35047084/air-fryer-brussels-sprouts-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food3",
+      "dialog_node": "node_4_1626070262884",
+      "previous_sibling": "node_8_1626069939032"
+    },
+    {
+      "type": "standard",
+      "title": "Food4",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-beet-salad-jpg-1526059794.jpg?resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a20155300/roasted-beet-goat-cheese-salad-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190322-carrot-salad-vertical-1553721842.png?crop=0.974xw:0.651xh;0.0136xw,0.168xh&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a26966588/carrot-salad-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Third Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/vidthumb/images/mediterranean-chickpea-salad-1526077481.png?crop=1xw:1xh;center,top&resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a19885314/mediterranean-chickpea-salad-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food4",
+      "dialog_node": "node_6_1626070533042",
+      "previous_sibling": "node_4_1626070262884"
+    },
+    {
+      "type": "standard",
+      "title": "Welcoming",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nice to see you again!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#welcome",
+      "dialog_node": "node_8_1626059094319",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Food2",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/210623-delish-quarterly-salsa-verde-shrimp-and-rice-horizontal-no-hands-0182-eb-1625266727.jpg?crop=0.736xw:0.694xh;0.00680xw,0.161xh&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a36917609/one-pan-salsa-verde-shrimp-and-rice-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-slow-cooker-pulled-pork-horizontal-2-1539619173.png?crop=1xw:1xh;center,top&resize=768:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/g2882/summer-slow-cooker/?slide=1",
+            "response_type": "image"
+          },
+          {
+            "title": "Third Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/del.h-cdn.co/assets/17/31/2048x1365/gallery-1501791773-delish-crock-pot-pork-chops-horizontal.jpg?resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/recipes/a54689/easy-crock-pot-pork-chops-recipe/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food2",
+      "dialog_node": "node_8_1626069939032",
+      "previous_sibling": "node_9_1626068148313"
+    },
+    {
+      "type": "standard",
+      "title": "Food",
+      "output": {
+        "generic": [
+          {
+            "title": "First Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190322-ham-sandwich-horizontal-1553721016.png?crop=0.668xw:1.00xh;0.168xw,0&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a26966279/ham-sandwich-recipe/",
+            "response_type": "image"
+          },
+          {
+            "title": "Second Recipe (Copy the link for recipe):",
+            "source": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/20210404-ehg-delish-maple-chorizo-breakfast-skillet00006-1623861023.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*",
+            "description": "https://www.delish.com/cooking/recipe-ideas/a36426262/campfire-breakfast-skillet/",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food",
+      "dialog_node": "node_9_1626068148313",
+      "previous_sibling": "node_3_1626059239625"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Will hello there! I'm \"Foodi\", and i'm gona give you some recipes ideas!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "talk",
+  "language": "en",
+  "description": ""
+}
